@@ -12,10 +12,13 @@
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
+      ref: 'user',
     },
     post:{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'post',
     }
-  })
+  },
+  { timestamps: true }
+  );
+  module.exports = mongoose.model('post', postSchema);
