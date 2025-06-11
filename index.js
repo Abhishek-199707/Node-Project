@@ -2,21 +2,23 @@ const express = require('express');
 
 const cors = require('cors');
 const colors = require('colors');
+const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 dotenv.config();
 const authRoutes = require('./routes/authRoutes');
  const postRoutes = require('./routes/postRoutes');
-// const commentRoutes = require('./routes/commentRoutes')
+const commentRoutes = require('./routes/commentRoutes')
 
 connectDB();
 const app = express();
 app.use(cors())
 app.use(express.json());
+app.use(cookieParser());
 
  app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
-// app.use('/api/comments', commentRoutes);
+app.use('/api/comments', commentRoutes);
 
 app.get('/',(req,res)=>{
   res.send('this is home page')

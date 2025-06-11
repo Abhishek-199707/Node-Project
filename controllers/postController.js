@@ -14,7 +14,7 @@ const createPostController = async (req, res) => {
     const post = new postModel({
       title,
       content,
-      author: req.user.userId // Assuming req.user is set by auth middleware
+      author: req.user.userId 
     });
 
     console.log("Authenticated user:", req.user);
